@@ -1,0 +1,16 @@
+<div class="container mt-4">
+  <h1>Result</h1>
+
+  <% case @result %>
+  <% when :not_in_grid %>
+    <p>Sorry but <strong><%= @word.upcase %></strong> can't be built out of <%= @letters.join(", ") %>.</p>
+  <% when :not_english %>
+    <p>Sorry but <strong><%= @word.upcase %></strong> does not seem to be a valid English word.</p>
+  <% when :valid_attempt %>
+    <p>Congratulations! <strong><%= @word.upcase %></strong> is a valid English word!</p>
+  <% end %>
+
+  <p>Total score: <strong><%= session[:total_score] %></strong></p>
+
+  <%= link_to "Play again", new_path, class: "btn btn-primary mt-3" %>
+</div>
